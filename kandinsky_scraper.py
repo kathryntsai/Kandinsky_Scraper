@@ -51,7 +51,7 @@ for i in range(1, 750):
         
         # makes sure image already exists
         
-        if (find(image_name, file_folder)) is 'No match':
+        if (find(image_name, file_folder) is 'No match'):
             print('saving ', image, ' as ', image_name)
             # save image as image_name in Kandinsky folder
             r = requests.get(image)
