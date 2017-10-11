@@ -28,7 +28,6 @@ def find(name, path):
     return "No match"
 
 for i in range(1, 750):
-    
     # need to use this url instead of image url to retrieve title as well
     try:
         url = 'http://www.wassilykandinsky.net/work-' + str(i) + '.php'
