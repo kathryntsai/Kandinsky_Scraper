@@ -15,7 +15,7 @@ detect number of files in directory already and then start from there
 
 # in future, fix this
 # os.chdir('\\Kandinsky')
-file_folder = 'Kandinsky\\'
+file_folder = 'Kandinsky'
 
 errorCount = 0;
 max_errors = 750;
@@ -45,21 +45,20 @@ for i in range(1, 750):
         image = 'http://www.wassilykandinsky.net/' + img.get('src')
         parenthesis = img.get('title').find('(')
         if (parenthesis is None):
-            image_name = img.get('title').strip() + '.jpg'
+            image_name = str(i) + ' ' + img.get('title').strip() + '.jpg'
         else:
-            image_name = img.get('title')[:parenthesis].strip() +'.jpg'
-        
+            image_name = str(i) + ' ' + img.get('title')[:parenthesis].strip() + '.jpg'
+                
         # makes sure image already exists
-        
-        if (find(image_name, file_folder) is 'No match'):
+        if (find(image_name, file_folder) == 'No match'):
             print('saving ', image, ' as ', image_name)
             # save image as image_name in Kandinsky folder
             r = requests.get(image)
-            with open(file_folder + image_name, 'wb') as f:
+            with open(file_folder + '\\' + image_name, 'wb') as f:
                 f.write(r.content)
         else:
             # move onto next work
-            print('Work ', str(i), ' has already been saved.')
+            print('Work ', str(i), ' has already been saved as ', image_name, '.')
             quit
             
     except IOError:
